@@ -18,6 +18,6 @@ galaxy_info:
     - development
     - php
     - php5
-    - php5.6
+    - php56
     - pecl
     - pear
