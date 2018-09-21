@@ -1,7 +1,7 @@
 ---
 
 dependencies:
-  - role: honomoa.ansible-role-php5
+  - role: honomoa.php5
 
 galaxy_info:
   role_name: php5-pecl

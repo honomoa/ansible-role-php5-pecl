@@ -62,6 +62,9 @@ static object to load, for example:
   roles:
     - { role: honomoa.php5-pecl }
 ```
+# Dependencies
+
+[honomoa.php5](https://galaxy.ansible.com/honomoa/php5)
 
 # License
 CC BY-SA 3.0
