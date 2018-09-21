@@ -1,0 +1,35 @@
+---
+
+- name: Ensure pecl is installed (if configured).
+  package:
+    name: "{{ php_pecl_package }}"
+    state: present
+  when: php_pecl_install_pecl
+
+- name: Install PECL libaries.
+  shell: "yes '' | {{ php_pecl_install_command }} {{ item }}"
+  register: pecl_result
+  changed_when: "pecl_result.rc == 0"
+  failed_when: "not (('already installed' in pecl_result.stdout) or ('install ok:' in pecl_result.stdout))"
+  with_items: "{{ php_pecl_extensions }}"
+
+- name: PHP-CLI enable extensions
+  blockinfile:
+    path: "{{ php_root }}/cli/php.ini"
+    block: |
+      [{{ item.name }}]
+      extension={{ item.so }}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.name }}"
+  with_items: "{{ load_extensions }}"
+
+- name: PHP-FPM enable extensions
+  blockinfile:
+    path: "{{ php_root }}/fpm/php.ini"
+    block: |
+      [{{ item.name }}]
+      extension={{ item.so }}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.name }}"
+  with_items: "{{ load_extensions }}"
+
+- name: Restart php5-fpm
+  service: name=php5.6-fpm enabled=yes state=restarted

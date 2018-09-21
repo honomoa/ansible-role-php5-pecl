@@ -1,0 +1,23 @@
+---
+
+dependencies:
+  - role: honomoa.ansible-role-php5
+
+galaxy_info:
+  role_name: php5-pecl
+  author: honomoa
+  description: PECL is a repository for PHP Extensions, providing a directory of all known extensions and hosting facilities for downloading and development of PHP extensions.
+  company: "Moa"
+  license: "license (CC BY-SA 3.0)"
+  min_ansible_version: 2.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+  galaxy_tags:
+    - development
+    - php
+    - php5
+    - php5.6
+    - pecl
+    - pear

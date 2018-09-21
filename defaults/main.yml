@@ -1,0 +1,13 @@
+---
+
+php_root: /etc/php/5.6
+php_pecl_install_pecl: false
+php_pecl_install_command: "pecl install"
+
+# Add extensions to this list to have them installed with this role.
+php_pecl_extensions: []
+  # - xdebug
+
+php_pecl_package: php-pecl
+load_extensions: []
+  # - { name: 'mongo', so: 'mongo.so' }
